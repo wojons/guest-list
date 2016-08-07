@@ -10,7 +10,29 @@ Have you always been trying to find the best way to provide and manage SSH keys 
 * Give users access based on hostname pattern mattching (no need to give everyone root)
 
 ## Install
-Now add the following to your /etc/sshd/sshd_config file:
 
-AuthorizedKeysCommand      /usr/local/bin/userkeys.sh
-AuthorizedKeysCommandUser  nobody
+### 1. Clone Repo
+
+```git clone https://github.com/wojons/guest-list /opt/guest-list```
+
+### 2. Install Dependancies
+``` pip install -r install.```
+
+### 3. Configure guest-list.ini (you can move it to /etc/guest-list.ini
+
+
+### 4. Upload your manifest files to sources you setup
+
+
+### 5. Now add the following to your /etc/sshd/sshd_config file:
+
+```
+AuthorizedKeysCommand      /opt/guest-list.sh
+AuthorizedKeysCommandUser  root
+```
+
+### 6. Restart ssh server
+
+``` service sshd restart```
+
+### 7. Test and have fun
